@@ -1,0 +1,34 @@
+import java.util.HashSet;
+
+class Solution {
+    public Node makeUnion(Node head1, Node head2) {
+        HashSet<Integer> seen = new HashSet<>();
+        
+        Node dummy = new Node(0);
+        Node tail = dummy;
+        
+        
+        Node temp = head1;
+        while (temp != null) {
+            if (!seen.contains(temp.data)) {
+                seen.add(temp.data);
+                tail.next = new Node(temp.data);
+                tail = tail.next;
+            }
+            temp = temp.next;
+        }
+        
+       
+        temp = head2;
+        while (temp != null) {
+            if (!seen.contains(temp.data)) {
+                seen.add(temp.data);
+                tail.next = new Node(temp.data);
+                tail = tail.next;
+            }
+            temp = temp.next;
+        }
+        
+        return dummy.next;
+    }
+}
